@@ -6,29 +6,29 @@
             <div class="card">
                 <div>
                     <div class="numbers">1,504</div>
-                    <div class="cardName">Daily Views</div>
+                    <div class="cardName">Store</div>
                 </div>
 
                 <div class="iconBx">
-                    <ion-icon name="eye-outline" role="img" class="md hydrated" aria-label="eye outline"></ion-icon>
+                    <i class="fas fa-map-location-dot"></i>
                 </div>
             </div>
 
             <div class="card">
                 <div>
                     <div class="numbers">80</div>
-                    <div class="cardName">Sales</div>
+                    <div class="cardName">User</div>
                 </div>
 
                 <div class="iconBx">
-                    <ion-icon name="cart-outline" role="img" class="md hydrated" aria-label="cart outline"></ion-icon>
+                    <i class="fas fa-users"></i>
                 </div>
             </div>
 
             <div class="card">
                 <div>
                     <div class="numbers">284</div>
-                    <div class="cardName">Comments</div>
+                    <div class="cardName">Customer</div>
                 </div>
 
                 <div class="iconBx">

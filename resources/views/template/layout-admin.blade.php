@@ -38,21 +38,21 @@
                 </li>
 
                 <li class="">
-                    <a href="#">
+                    <a href="/dashboard">
 
                         <span class="title"> <i class="fas fa-home"></i> Dashboard</span>
                     </a>
                 </li>
 
                 <li class="">
-                    <a href="#">
+                    <a href="/customer">
 
                         <span class="title"> <i class="fas fa-users"></i> Customers</span>
                     </a>
                 </li>
 
                 <li class="">
-                    <a href="#">
+                    <a href="">
                         {{-- <span class="icon">
                             <ion-icon name="chatbubble-outline" role="img" class="md hydrated" aria-label="chatbubble outline"></ion-icon>
                         </span> --}}
@@ -61,7 +61,7 @@
                 </li>
 
                 <li class="">
-                    <a href="#">
+                    <a href="/wilayah">
                         {{-- <span class="icon">
                             <ion-icon name="help-outline" role="img" class="md hydrated" aria-label="help outline"></ion-icon>
                         </span> --}}
@@ -71,7 +71,7 @@
                 </li>
 
                 <li class="">
-                    <a href="#">
+                    <a href="/level">
                         {{-- <span class="icon">
                             <ion-icon name="settings-outline" role="img" class="md hydrated" aria-label="settings outline"></ion-icon>
                         </span> --}}
@@ -80,7 +80,7 @@
                 </li>
 
                 <li class="hovered">
-                    <a href="#">
+                    <a href="/user">
                         {{-- <span class="icon">
                             <ion-icon name="lock-closed-outline" role="img" class="md hydrated" aria-label="lock closed outline"></ion-icon>
                         </span> --}}
