@@ -18,14 +18,30 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <form action="{{ route('wilayah.create') }}" method="post">
+                                <form action="{{ route('customer.create') }}" method="post">
                                     <div class="modal-body">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Store</label>
-                                            <input type="text" class="form-control" name="wilayah"
-                                                id="exampleFormControlInput1" required>
+                                            <label class="form-label">Nama</label>
+                                            <input type="text" class="form-control" name="nama" required>
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">NIK</label>
+                                            <input type="text" class="form-control" name="nik" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">No Telp</label>
+                                            <input type="text" class="form-control" name="no_telp" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Alamat</label>
+                                            <textarea name="alamat" id="" cols="30" rows="10" class="form-control"></textarea>
+                                        </div>
+
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -41,7 +57,10 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Store</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">NIK</th>
+                            <th scope="col">No Telp</th>
+                            <th scope="col">Alamat</th>
                             <th scope="col">Opsi</th>
 
                         </tr>
@@ -50,13 +69,16 @@
                         @php
                             $no = 1;
                         @endphp
-                        @foreach ($data['wilayah'] as $item)
+                        @foreach ($data['customer'] as $item)
                             <tr>
                                 <th scope="row">{{ $no++ }}</th>
-                                <td>{{ $item->wilayah }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->nik }}</td>
+                                <td>{{ $item->no_telp }}</td>
+                                <td>{{ $item->alamat }}</td>
                                 <td>
                                     <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}"
-                                        data-url='hapuswilayah'><i class="fas fa-trash"></i></button>
+                                        data-url='hapuscustomer'><i class="fas fa-trash"></i></button>
                                     <button class="btn" data-bs-toggle="modal"
                                         data-bs-target="#exampleModaledit{{ $item->id }}"> <i
                                             class="fas fa-pen"></i></button>
@@ -72,20 +94,39 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form action="{{ route('wilayah.update', $item->id) }}" method="post">
+                                        <form action="{{ route('customer.update', $item->id) }}" method="post">
                                             <div class="modal-body">
                                                 @csrf
                                                 @method('PUT')
+
                                                 <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Store</label>
-                                                    <input type="text" class="form-control" value="{{ $item->wilayah }}"
-                                                        name="wilayah" id="exampleFormControlInput1" required>
+                                                    <label class="form-label">Nama</label>
+                                                    <input type="text" value="{{ $item->nama }}" class="form-control"
+                                                        name="nama" required>
                                                 </div>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">NIK</label>
+                                                    <input type="text" class="form-control" value="{{ $item->nik }}"
+                                                        name="nik" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">No Telp</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $item->no_telp }}" name="no_telp" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">Alamat</label>
+                                                    <textarea name="alamat" id="" cols="30" rows="10" class="form-control" required>{{ $item->alamat }}</textarea>
+                                                </div>
+
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
                                             </div>
                                         </form>
                                     </div>

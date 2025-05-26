@@ -51,21 +51,14 @@
                     </a>
                 </li>
 
-                <li class="">
-                    <a href="">
-                        {{-- <span class="icon">
-                            <ion-icon name="chatbubble-outline" role="img" class="md hydrated" aria-label="chatbubble outline"></ion-icon>
-                        </span> --}}
-                        <span class="title"> <i class="fas fa-comment"></i> Messages</span>
-                    </a>
-                </li>
+
 
                 <li class="">
                     <a href="/wilayah">
                         {{-- <span class="icon">
                             <ion-icon name="help-outline" role="img" class="md hydrated" aria-label="help outline"></ion-icon>
                         </span> --}}
-                        <span class="title"><i class="fas fa-map-location-dot"></i> Wialayah</span>
+                        <span class="title"><i class="fas fa-map-location-dot"></i> Store</span>
 
                     </a>
                 </li>

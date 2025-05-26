@@ -13,7 +13,7 @@ class WilayahController extends Controller
     function index()
     {
         $data = [
-            'title' => 'Wilayah',
+            'title' => 'Store',
             'wilayah' => Wilayah::all(),
         ];
         return view('admin.wilayah', compact('data'));
@@ -25,7 +25,7 @@ class WilayahController extends Controller
         $wl = new Wilayah();
         $wl->wilayah = $request->wilayah;
         $wl->save();
-        return redirect()->route('wilayah')->with('success', 'Data wilayah berhasil ditambah');
+        return redirect()->route('wilayah')->with('success', 'Data store berhasil ditambah');
     }
 
     function update(Request $request, $id)
@@ -34,7 +34,7 @@ class WilayahController extends Controller
         $wl = Wilayah::find($id);
         $wl->wilayah = $request->wilayah;
         $wl->update();
-        return redirect()->route('wilayah')->with('success', 'Data wilayah berhasil diubah');
+        return redirect()->route('wilayah')->with('success', 'Data store berhasil diubah');
     }
 
     function delete($id)

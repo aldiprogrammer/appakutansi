@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LevelController;
 use App\Http\Controllers\admin\PenggunaController;
@@ -30,3 +31,8 @@ Route::get('/user', [PenggunaController::class, 'index'])->name('user');
 Route::post('/user', [PenggunaController::class, 'create'])->name('user.create');
 Route::put('/user/{id}', [PenggunaController::class, 'update'])->name('user.update');
 Route::delete('/hapususer/{id}', [PenggunaController::class, 'delete'])->name('user.delete');
+
+Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+Route::post('/customer', [CustomerController::class, 'create'])->name('customer.create');
+Route::put('/customer/{id}', [CustomerController::class, 'update'])->name('customer.update');
+Route::delete('/hapuscustomer/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
