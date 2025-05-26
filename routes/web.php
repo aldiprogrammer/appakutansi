@@ -6,13 +6,13 @@ use App\Http\Controllers\admin\LevelController;
 use App\Http\Controllers\admin\PenggunaController;
 use App\Http\Controllers\admin\WilayahController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\pdf\PdfCustomer;
 use App\Models\Wilayah;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+
+Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'act_login'])->name('auth.login');
 
@@ -36,3 +36,5 @@ Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
 Route::post('/customer', [CustomerController::class, 'create'])->name('customer.create');
 Route::put('/customer/{id}', [CustomerController::class, 'update'])->name('customer.update');
 Route::delete('/hapuscustomer/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+
+Route::get('/pdfcustomer', [PdfCustomer::class, 'index'])->name('pdfcustomer');
