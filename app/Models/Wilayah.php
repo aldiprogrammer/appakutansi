@@ -11,6 +11,6 @@ class Wilayah extends Model
 
     public function user()
     {
-        return $this->hasMany(Pengguna::class, 'id_wilayah');
+        return $this->hasMany(Pengguna::class, 'id_wilayah', 'nama_investor', 'investasi', 'persentase');
     }
 }

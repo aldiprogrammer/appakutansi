@@ -186,6 +186,22 @@
 
                         }
                     });
+                });
+
+                $(".typecost").change(function(){
+                    var id = $(this).val();
+                    $.ajax({
+                        url: "/detailcost/"+id,
+                        type: 'GET',
+                        success : function(response){
+                           $("#detailcost").val(response.detail);
+                           $(".editdetailcost").val(response.detail);
+                        },
+                        error : function(error){
+                            console.log(error.message);
+                            
+                        }
+                    })
                 })
             </script>
 

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\CostController;
 use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LevelController;
 use App\Http\Controllers\admin\PenggunaController;
+use App\Http\Controllers\admin\TransaksiCostController;
 use App\Http\Controllers\admin\WilayahController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\pdf\PdfCustomer;
@@ -36,5 +38,16 @@ Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
 Route::post('/customer', [CustomerController::class, 'create'])->name('customer.create');
 Route::put('/customer/{id}', [CustomerController::class, 'update'])->name('customer.update');
 Route::delete('/hapuscustomer/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+
+Route::get('/cost', [CostController::class, 'index'])->name('cost');
+Route::post('/cost', [CostController::class, 'create'])->name('cost.create');
+Route::put('/cost/{id}', [CostController::class, 'update'])->name('cost.update');
+Route::delete('/hapuscost/{id}', [CostController::class, 'delete'])->name('cost.delete');
+Route::get('/detailcost/{id}', [CostController::class, 'detailcost'])->name('cost.detailcost');
+
+Route::get('/transaksicost', [TransaksiCostController::class, 'index'])->name('transaksicost');
+Route::post('/transaksicost', [TransaksiCostController::class, 'create'])->name('transaksicost.create');
+Route::put('/transaksicost/{id}', [TransaksiCostController::class, 'update'])->name('transaksicost.update');
+Route::delete('/hapustransaksicost/{id}', [TransaksiCostController::class, 'delete'])->name('transaksicost.delete');
 
 Route::get('/pdfcustomer', [PdfCustomer::class, 'index'])->name('pdfcustomer');
