@@ -46,7 +46,6 @@
 
                 <li class="">
                     <a href="/customer">
-
                         <span class="title"> <i class="fas fa-users"></i> Customers</span>
                     </a>
                 </li>
@@ -58,7 +57,7 @@
                         {{-- <span class="icon">
                             <ion-icon name="help-outline" role="img" class="md hydrated" aria-label="help outline"></ion-icon>
                         </span> --}}
-                        <span class="title"><i class="fas fa-map-location-dot"></i> Store</span>
+                        <span class="title"><i class="fas fa-map-location-dot"></i> Lokasi</span>
 
                     </a>
                 </li>
@@ -188,18 +187,18 @@
                     });
                 });
 
-                $(".typecost").change(function(){
+                $(".typecost").change(function() {
                     var id = $(this).val();
                     $.ajax({
-                        url: "/detailcost/"+id,
+                        url: "/detailcost/" + id,
                         type: 'GET',
-                        success : function(response){
-                           $("#detailcost").val(response.detail);
-                           $(".editdetailcost").val(response.detail);
+                        success: function(response) {
+                            $("#detailcost").val(response.detail);
+                            $(".editdetailcost").val(response.detail);
                         },
-                        error : function(error){
+                        error: function(error) {
                             console.log(error.message);
-                            
+
                         }
                     })
                 })

@@ -27,7 +27,6 @@ class WilayahController extends Controller
         $wl->wilayah = $request->wilayah;
         $wl->nama_investor = $request->nama_investor;
         $wl->investasi = $request->investasi;
-        $wl->persentase = '';
         $wl->save();
         return redirect()->route('wilayah')->with('success', 'Data lokasi berhasil ditambah');
     }
@@ -37,7 +36,7 @@ class WilayahController extends Controller
 
         $wl = Wilayah::find($id);
         $wl->wilayah = $request->wilayah;
-        $wl->nama_investor = $request->nama_investor;
+        
         $wl->investasi = $request->investasi;
         $wl->update();
         return redirect()->route('wilayah')->with('success', 'Data  berhasil diubah');

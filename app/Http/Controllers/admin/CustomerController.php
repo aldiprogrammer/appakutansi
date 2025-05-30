@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\RekeningCustomer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -14,7 +15,8 @@ class CustomerController extends Controller
     {
         $data = [
             'title' => 'Customer',
-            'customer' => Customer::all(),
+            'customer' => Customer::with('rekening')->get(),
+            'kode' => 'CS-' . rand(0, 100000),
         ];
         return view('admin.customer', compact('data'));
     }
@@ -22,12 +24,25 @@ class CustomerController extends Controller
     function create(Request $request)
     {
 
+        $valdiate = $request->validate([
+            'wa' => 'unique:customers,wa',
+        ], [
+            'wa.unique' => 'Nomor whatsapp sudah terdaftar sebelumnya'
+        ]);
+
         $cs = new Customer();
-        $cs->nama = $request->nama;
-        $cs->nik = $request->nik;
-        $cs->alamat = $request->alamat;
-        $cs->no_telp = $request->no_telp;
+        $cs->kode = $request->kode;
+        $cs->owner = $request->owner;
+        $cs->wa = $request->wa;
+        $cs->level = $request->level;
         $cs->save();
+
+        $rc = new RekeningCustomer();
+        $rc->kode_customer = $request->kode;
+        $rc->rekening = $request->rekening;
+        $rc->no_rekening = $request->no_rekening;
+        $rc->nama_rekening = $request->nama_rekening;
+        $rc->save();
 
         return redirect()->route('customer')->with('success', 'Data customer berhasil ditambah');
     }
@@ -35,10 +50,9 @@ class CustomerController extends Controller
     function update(Request $request, $id)
     {
         $cs = Customer::find($id);
-        $cs->nama = $request->nama;
-        $cs->alamat = $request->alamat;
-        $cs->nik = $request->nik;
-        $cs->no_telp = $request->no_telp;
+        $cs->owner = $request->owner;
+        $cs->wa = $request->wa;
+        $cs->level = $request->level;
         $cs->update();
         return redirect()->route('customer')->with('success', 'Data customer berhasil diubah');
     }

@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LevelController;
 use App\Http\Controllers\admin\PenggunaController;
+use App\Http\Controllers\admin\StoreController;
 use App\Http\Controllers\admin\TransaksiCostController;
 use App\Http\Controllers\admin\WilayahController;
 use App\Http\Controllers\AuthController;
@@ -49,5 +50,10 @@ Route::get('/transaksicost', [TransaksiCostController::class, 'index'])->name('t
 Route::post('/transaksicost', [TransaksiCostController::class, 'create'])->name('transaksicost.create');
 Route::put('/transaksicost/{id}', [TransaksiCostController::class, 'update'])->name('transaksicost.update');
 Route::delete('/hapustransaksicost/{id}', [TransaksiCostController::class, 'delete'])->name('transaksicost.delete');
+
+Route::get('/store', [StoreController::class, 'index'])->name('store');
+Route::post('/store', [StoreController::class, 'create'])->name('store.create');
+Route::put('/store/{id}', [StoreController::class, 'update'])->name('store.update');
+Route::delete('/hapusstore/{id}', [StoreController::class, 'delete'])->name('store.delete');
 
 Route::get('/pdfcustomer', [PdfCustomer::class, 'index'])->name('pdfcustomer');

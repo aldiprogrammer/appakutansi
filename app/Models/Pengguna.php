@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pengguna extends Model
 {
 
-    protected $fillable = ['username', 'password', 'password2', 'id_level', 'id_wilayah'];
+    protected $fillable = ['username', 'password', 'id_level', 'id_wilayah'];
 
 
     public function wilayah()

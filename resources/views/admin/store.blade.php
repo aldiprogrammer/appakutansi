@@ -18,42 +18,30 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <form action="{{ route('user.create') }}" method="post">
+                                <form action="{{ route('store.create') }}" method="post">
                                     <div class="modal-body">
                                         @csrf
                                         <div class="mb-3">
-                                            <label class="form-label">Username</label>
-                                            <input type="text" class="form-control" name="username" required>
+                                            <label for="exampleFormControlInput1" class="form-label">Marketplace</label>
+                                            <input type="text" class="form-control" name="marketplace" required>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Wilayah</label>
-                                            <select name="wilayah" id="" class="form-control">
-                                                <option value="">-- Pilih Wilayah --</option>
-                                                @foreach ($data['wilayah'] as $wl)
-                                                    <option value="{{ $wl->id }}">{{ $wl->wilayah }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="exampleFormControlInput1" class="form-label">Store Name</label>
+                                            <input type="text" class="form-control" name="store_name" required>
                                         </div>
-
                                         <div class="mb-3">
-                                            <label class="form-label">Level</label>
-                                            <select name="id_level" id="" class="form-control">
-                                                <option value="">-- Pilih Level User --</option>
-                                                @foreach ($data['level'] as $lv)
-                                                    <option value="{{ $lv->id }}">{{ $lv->level }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="exampleFormControlInput1" class="form-label">Bank</label>
+                                            <input type="text" class="form-control" name="bank" required>
                                         </div>
-
                                         <div class="mb-3">
-                                            <label class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="password" required>
+                                            <label for="exampleFormControlInput1" class="form-label">No Rekening</label>
+                                            <input type="text" class="form-control" name="no_rekening" required>
                                         </div>
-
-
-
-
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Nama Rekening</label>
+                                            <input type="text" class="form-control" name="nama_rekening" required>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -69,9 +57,10 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Wilayah</th>
-                            <th scope="col">Level</th>
+                            <th scope="col">Marketplace</th>
+                            <th scope="col">Bank</th>
+                            <th scope="col">No Rekening</th>
+                            <th scope="col">Nama Rekening</th>
                             <th scope="col">Opsi</th>
 
                         </tr>
@@ -80,15 +69,17 @@
                         @php
                             $no = 1;
                         @endphp
-                        @foreach ($data['user'] as $item)
+                        @foreach ($data['store'] as $item)
                             <tr>
                                 <th scope="row">{{ $no++ }}</th>
-                                <td>{{ $item->username }}</td>
-                                <td>{{ $item->wilayah->wilayah }}</td>
-                                <td>{{ $item->level->level }}</td>
+                                <td>{{ $item->marketplace }}</td>
+                                <td>{{ $item->bank }}</td>
+                                <td>{{ $item->no_rekening }}</td>
+                                <td>{{ $item->nama_rekening }}</td>
+
                                 <td>
                                     <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}"
-                                        data-url='hapususer'><i class="fas fa-trash"></i></button>
+                                        data-url='hapusstore'><i class="fas fa-trash"></i></button>
                                     <button class="btn" data-bs-toggle="modal"
                                         data-bs-target="#exampleModaledit{{ $item->id }}"> <i
                                             class="fas fa-pen"></i></button>
@@ -104,52 +95,45 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form action="{{ route('user.update', $item->id) }}" method="post">
+                                        <form action="{{ route('store.update', $item->id) }}" method="post">
                                             <div class="modal-body">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="mb-3">
-                                                    <label class="form-label">Username</label>
+                                                    <label for="exampleFormControlInput1"
+                                                        class="form-label">Marketplace</label>
                                                     <input type="text" class="form-control"
-                                                        value="{{ $item->username }}" name="username" required>
+                                                        value="{{ $item->marketplace }}" name="marketplace" required>
                                                 </div>
 
                                                 <div class="mb-3">
-                                                    <label class="form-label">Wilayah</label>
-                                                    <select name="wilayah" id="" class="form-control">
-                                                        <option value="{{ $item->id_wilayah }}">
-                                                            {{ $item->wilayah->wilayah }}</option>
-                                                        @foreach ($data['wilayah'] as $wl)
-                                                            <option value="{{ $wl->id }}">{{ $wl->wilayah }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    <label for="exampleFormControlInput1" class="form-label">Store
+                                                        Name</label>
+                                                    <input type="text" class="form-control" name="store_name"
+                                                        value="{{ $item->store_name }}" required>
                                                 </div>
-
                                                 <div class="mb-3">
-                                                    <label class="form-label">Level</label>
-                                                    <select name="level" id="" class="form-control">
-                                                        <option value="{{ $item->id_level }}">{{ $item->level->level }}
-                                                        </option>
-                                                        @foreach ($data['level'] as $lv)
-                                                            <option value="{{ $lv->id }}">{{ $lv->level }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    <label for="exampleFormControlInput1" class="form-label">Bank</label>
+                                                    <input type="text" class="form-control" name="bank"
+                                                        value="{{ $item->bank }}" required>
                                                 </div>
-
                                                 <div class="mb-3">
-                                                    <label class="form-label">Password</label>
-                                                    <input type="password" class="form-control" name="password">
-                                                    <small>Kosongkan password jika tidak ingin merubah password anda</small>
-
+                                                    <label for="exampleFormControlInput1" class="form-label">No
+                                                        Rekening</label>
+                                                    <input type="text" class="form-control" name="no_rekening"
+                                                        value="{{ $item->no_rekening }}" required>
                                                 </div>
-
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Nama
+                                                        Rekening</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $item->nama_rekening }}" name="nama_rekening" required>
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <button type="submit" class="btn btn-primary">Save</button>
                                             </div>
                                         </form>
                                     </div>

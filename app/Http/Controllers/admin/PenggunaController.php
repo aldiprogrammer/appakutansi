@@ -27,11 +27,9 @@ class PenggunaController extends Controller
 
         $user = new Pengguna();
         $user->username = $request->username;
-        $user->id_level = $request->level;
+        $user->id_level = $request->id_level;
         $user->id_wilayah = $request->wilayah;
-        $user->password2 = '';
         $user->password = Hash::make($request->password);
-
         $user->save();
         return redirect()->route('user')->with('success', 'Data user berhasil ditambah');
     }
