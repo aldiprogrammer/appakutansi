@@ -201,6 +201,21 @@
 
                         }
                     })
+                });
+
+                $("#mr").change(function(){
+                    var id = $(this).val();
+                    $.ajax({
+                        url : 'store/'+id,
+                        type : 'GET',
+                        success : function(response){
+                            $("#store").val(response.store);
+                        },
+                        error : function(err){
+                            console.log(err.message);
+                            
+                        }
+                    })
                 })
             </script>
 

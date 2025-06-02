@@ -18,6 +18,14 @@ class StoreController extends Controller
         return view('admin.store', compact('data'));
     }
 
+    function detail($id)
+    {
+        $store = Store::find($id);
+        return response()->json([
+            'store' => $store->store_name,
+        ]);
+    }
+
     function create(Request $request)
     {
 

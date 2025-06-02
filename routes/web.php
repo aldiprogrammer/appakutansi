@@ -5,8 +5,11 @@ use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LevelController;
 use App\Http\Controllers\admin\PenggunaController;
+use App\Http\Controllers\admin\ProdukController;
+use App\Http\Controllers\admin\RekeningController;
 use App\Http\Controllers\admin\StoreController;
 use App\Http\Controllers\admin\TransaksiCostController;
+use App\Http\Controllers\admin\TransaksiPelangganController;
 use App\Http\Controllers\admin\WilayahController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\pdf\PdfCustomer;
@@ -37,8 +40,10 @@ Route::delete('/hapususer/{id}', [PenggunaController::class, 'delete'])->name('u
 
 Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
 Route::post('/customer', [CustomerController::class, 'create'])->name('customer.create');
+// Route::post('/rekening', [CustomerController::class, 'rekening'])->name('customer.rekening');
 Route::put('/customer/{id}', [CustomerController::class, 'update'])->name('customer.update');
 Route::delete('/hapuscustomer/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+
 
 Route::get('/cost', [CostController::class, 'index'])->name('cost');
 Route::post('/cost', [CostController::class, 'create'])->name('cost.create');
@@ -52,8 +57,24 @@ Route::put('/transaksicost/{id}', [TransaksiCostController::class, 'update'])->n
 Route::delete('/hapustransaksicost/{id}', [TransaksiCostController::class, 'delete'])->name('transaksicost.delete');
 
 Route::get('/store', [StoreController::class, 'index'])->name('store');
+Route::get('/store/{id}', [StoreController::class, 'detail'])->name('store.detail');
 Route::post('/store', [StoreController::class, 'create'])->name('store.create');
 Route::put('/store/{id}', [StoreController::class, 'update'])->name('store.update');
 Route::delete('/hapusstore/{id}', [StoreController::class, 'delete'])->name('store.delete');
+
+Route::get('/rekening/{kode}', [RekeningController::class, 'index'])->name('rekening');
+Route::post('/rekening', [RekeningController::class, 'create'])->name('rekening.create');
+Route::delete('rekening/hapusrekening/{id}', [RekeningController::class, 'delete'])->name('rekening.delete');
+Route::put('rekening/{id}', [RekeningController::class, 'update'])->name('rekening.update');
+
+Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+Route::post('/produk', [ProdukController::class, 'create'])->name('produk.create');
+Route::delete('/hapusproduk/{id}', [ProdukController::class, 'delete'])->name('produk.delete');
+Route::put('produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
+
+Route::get('/transaksi', [TransaksiPelangganController::class, 'index'])->name('transaksi');
+Route::post('/transaksi', [TransaksiPelangganController::class, 'create'])->name('transaksi.create');
+Route::delete('/hapustransaksi/{id}', [TransaksiPelangganController::class, 'delete'])->name('transaksi.delete');
+Route::put('transaksi/{id}', [TransaksiPelangganController::class, 'update'])->name('transaksi.update');
 
 Route::get('/pdfcustomer', [PdfCustomer::class, 'index'])->name('pdfcustomer');

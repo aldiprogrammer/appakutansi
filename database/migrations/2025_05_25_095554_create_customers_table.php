@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('kode', 30);
-            $table->string('Owner');
+            $table->string('owner');
             $table->string('wa');
             $table->string('level');
             $table->timestamps();

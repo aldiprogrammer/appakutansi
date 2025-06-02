@@ -106,7 +106,7 @@
                         @endphp
                         @foreach ($data['customer'] as $item)
                             @php
-                                $rek = $item->rekening->first();
+                                $rek = $item->rekening->where('status', 1)->first();
                             @endphp
                             <tr>
                                 <th scope="row">{{ $no++ }}</th>
@@ -122,6 +122,7 @@
                                     <button class="btn" data-bs-toggle="modal"
                                         data-bs-target="#exampleModaledit{{ $item->id }}"> <i
                                             class="fas fa-pen"></i></button>
+                                    <a href="/rekening/{{ $item->kode }}" class="btn"> <i class="fas fa-user"></i></a>
                                 </td>
                             </tr>
 
@@ -138,6 +139,11 @@
                                             <div class="modal-body">
                                                 @csrf
                                                 @method('PUT')
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">Kode Customer</label>
+                                                    <input type="text" class="form-control" value="{{ $item->kode }}" name="kode" readonly required>
+                                                </div>
 
                                                 <div class="mb-3">
                                                     <label class="form-label">Owner</label>
@@ -165,20 +171,17 @@
 
                                                 <div class="mb-3">
                                                     <label class="form-label">Rekening</label>
-                                                    <input type="text" class="form-control" name="rekening" required>
+                                                   <select name="rekening" id="" class="form-control">
+                                                        <option>{{ $rek->rekening }}</option>
+                                                        
+                                                        @foreach ($item->rekening as $dd )
+                                                            <option value="{{ $dd->id }}">{{ $dd->rekening }}</option>
+                                                        @endforeach
+
+                                                   </select>
                                                 </div>
 
-                                                <div class="mb-3">
-                                                    <label class="form-label">No Rekening</label>
-                                                    <input type="number" class="form-control" name="no_rekening"
-                                                        required>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">Nama Rekening</label>
-                                                    <input type="number" class="form-control" name="nama_rekening"
-                                                        required>
-                                                </div>
+                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"

@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('username', 30);
             $table->string('password');
-            $table->string('password2');
-            $table->string('level');
             $table->string('id_level', 11);
             $table->string('id_wilayah', 11);
             $table->timestamps();
