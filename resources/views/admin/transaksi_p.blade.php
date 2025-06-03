@@ -15,7 +15,7 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="{{ route('level.create') }}" method="post">
+                            <form action="{{ route('transaksi.create') }}" method="post">
                                 <div class="modal-body">
                                     @csrf
                                     <div class="mb-3">
@@ -35,7 +35,7 @@
 
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Whatsapp</label>
-                                        <select name="marketplace" id="wa" class="form-control">
+                                        <select name="wa" id="wa" class="form-control">
                                             <option>-- Pilih Whatsapp Cust --</option>
                                             @foreach($data['customer'] as $wa)
                                             <option value="{{ $wa->id }}">{{ $wa->wa }}</option>
@@ -45,8 +45,60 @@
 
                                     <div class="mb-3">
                                         <label class="form-label">Customer</label>
-                                        <input type="text" class="form-control" name="store" id="customer" readonly>
+                                        <input type="text" class="form-control" name="customer" id="customer" readonly>
                                     </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Rekening</label>
+                                        <select name="rekening" id="rekening" class="form-control"></select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Produk</label>
+                                        <select name="produk" id="produk" class="form-control" required>
+                                            <option value="">-- Pilih Produk --</option>
+                                            @foreach ($data['produk'] as $pp )
+                                                <option value="{{ $pp->id }}">{{ $pp->name }} - {{ $pp->level }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Rate</label>
+                                        <input type="text" class="form-control" name="rate" id="rate" required readonly>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Admin</label>
+                                        <input type="text" class="form-control" name="admin" id="admin" required readonly>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Transaksi</label>
+                                        <input type="number" class="form-control" id="transaksi" name="transaksi" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Biaya</label>
+                                        <input type="number" class="form-control" id="biaya" name="biaya" required readonly>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Transfer</label>
+                                        <input type="number" class="form-control" id="transfer" name="transfer" required readonly>
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
+                                        <select name="lokasi" id="lokasi" class="form-control" required>
+                                            <option value="">-- Pilih Lokasi --</option>
+                                            @foreach ($data['lokasi'] as $lk )
+                                            <option value="{{ $lk->id }}">{{ $lk->wilayah }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
 
 
 
@@ -85,21 +137,23 @@
                     @endphp
                     @foreach ($data['transaksi'] as $item)
                     <tr>
-                        <th scope="row">{{ $no++ }}</th>
-                        <td>{{ $item->marketplace }}</td>
+                        {{-- <th scope="row">{{ $no++ }}</th> --}}
+                        <td>{{ $item->storemr->marketplace }}</td>
+
                         <td>{{ $item->store }}</td>
-                        <td>{{ $item->wa }}</td>
-                        <td>{{ $item->customer }}</td>
-                        <td>{{ $item->rekening }}</td>
-                        <td>{{ $item->produk }}</td>
+                        <td>{{ $item->customertr->wa }}</td>
+
+                        <td>{{ $item->customertr->owner }}</td>
+                        <td>{{ $item->rekeningtr->rekening }}</td>
+                        <td>{{ $item->produktr->name }}</td>
                         <td>{{ $item->transaksi }}</td>
                         <td>{{ $item->rate }}</td>
                         <td>{{ $item->admin }}</td>
                         <td>{{ $item->biaya }}</td>
                         <td>{{ $item->transfer }}</td>
-                        <td>{{ $item->lokasi }}</td>
+                        <td>{{ $item->lokasitr->wilayah }}</td>
                         <td>
-                            <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}" data-url='hapuslevel'><i class="fas fa-trash"></i></button>
+                            <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}" data-url='hapustransaksi'><i class="fas fa-trash"></i></button>
                             <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModaledit{{ $item->id }}"> <i class="fas fa-pen"></i></button>
                         </td>
                     </tr>

@@ -21,6 +21,27 @@ class CustomerController extends Controller
         return view('admin.customer', compact('data'));
     }
 
+    function detail($id)
+    {
+        $cs = Customer::find($id);
+        $kode = $cs->kode;
+        $rekening = RekeningCustomer::where('kode_customer', $kode)->get();
+        $count = RekeningCustomer::where('kode_customer', $kode)->count();
+        if ($count > 1) {
+            $html = '<option value="">-- Pilih Rekening --</option>';
+        } else {
+            $html = '';
+        }
+        foreach ($rekening as $item) {
+            $html .= "<option value='{$item->id}'>No Rek: {$item->no_rekening} - Bank: {$item->rekening}</option>";
+        }
+
+        return response()->json([
+            'customer' => $cs->owner,
+            'rekening' => $html,
+        ]);
+    }
+
     function create(Request $request)
     {
 

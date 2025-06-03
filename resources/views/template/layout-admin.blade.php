@@ -216,6 +216,49 @@
                             
                         }
                     })
+                });
+                $("#wa").change(function(){
+                    var id = $(this).val();
+                    $.ajax({
+                        url : 'customer/'+id,
+                        type : 'GET',
+                        success : function(response){
+                             $("#customer").val(response.customer);
+                            $("#rekening").html(response.rekening);
+                             
+                        },
+                        error : function(error){
+                            console.log(error.message);
+                        }
+                    })
+                });
+
+                $("#produk").change(function(){
+                    var id = $(this).val();
+                    $.ajax({
+                        url : 'produk/'+id,
+                        type : 'GET',
+                        success : function(response){
+                            $("#rate").val(response.rate);
+                            $("#admin").val(response.admin);
+                        },
+                        error : function(error){
+                        }
+                    })
+                });
+                
+                $("#transaksi").keyup(function(){
+                    var val = $(this).val();
+                    var rate = $("#rate").val();
+                    var rate2 = parseFloat(rate);
+                    var persentase = rate2 / 100;
+                    var hasil = persentase * val;
+                    var admin = $("#admin").val();
+                    var transfer = val - hasil - admin
+
+                    $("#biaya").val(hasil);
+                    $("#transfer").val(transfer);
+                   
                 })
             </script>
 

@@ -39,6 +39,7 @@ Route::put('/user/{id}', [PenggunaController::class, 'update'])->name('user.upda
 Route::delete('/hapususer/{id}', [PenggunaController::class, 'delete'])->name('user.delete');
 
 Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+Route::get('/customer/{id}', [CustomerController::class, 'detail'])->name('customer.detail');
 Route::post('/customer', [CustomerController::class, 'create'])->name('customer.create');
 // Route::post('/rekening', [CustomerController::class, 'rekening'])->name('customer.rekening');
 Route::put('/customer/{id}', [CustomerController::class, 'update'])->name('customer.update');
@@ -68,6 +69,7 @@ Route::delete('rekening/hapusrekening/{id}', [RekeningController::class, 'delete
 Route::put('rekening/{id}', [RekeningController::class, 'update'])->name('rekening.update');
 
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+Route::get('/produk/{id}', [ProdukController::class, 'detail'])->name('produk.detail');
 Route::post('/produk', [ProdukController::class, 'create'])->name('produk.create');
 Route::delete('/hapusproduk/{id}', [ProdukController::class, 'delete'])->name('produk.delete');
 Route::put('produk/{id}', [ProdukController::class, 'update'])->name('produk.update');

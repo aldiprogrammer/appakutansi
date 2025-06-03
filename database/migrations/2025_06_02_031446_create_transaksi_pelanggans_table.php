@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('rate');
             $table->string('admin');
             $table->string('biaya');
-            $table->string('transper');
+            $table->string('transfer');
             $table->string('lokasi');
             $table->timestamps();
         });

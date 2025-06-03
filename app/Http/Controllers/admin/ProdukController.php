@@ -18,6 +18,15 @@ class ProdukController extends Controller
         return view('admin.produk', compact('data'));
     }
 
+    function detail($id)
+    {
+        $pp = Produk::find($id);
+        return response()->json([
+            'rate' => $pp->jual,
+            'admin' => $pp->admin1,
+        ]);
+    }
+
     function create(Request $request)
     {
 

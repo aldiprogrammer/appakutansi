@@ -4,8 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Produk;
 use App\Models\Store;
 use App\Models\TransaksiPelanggan;
+use App\Models\Wilayah;
 use Illuminate\Http\Request;
 
 class TransaksiPelangganController extends Controller
@@ -15,10 +17,13 @@ class TransaksiPelangganController extends Controller
     {
         $data = [
             'title' => 'Transaksi Customer',
-            'transaksi' => TransaksiPelanggan::all(),
+            'transaksi' => TransaksiPelanggan::with('storemr', 'customertr', 'rekeningtr', 'produktr', 'lokasitr')->get(),
             'marketplace' => Store::all(),
             'customer' => Customer::all(),
+            'produk' => Produk::all(),
+            'lokasi' => Wilayah::all(),
         ];
+
         return view('admin.transaksi_p', compact('data'));
     }
 
