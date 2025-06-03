@@ -170,9 +170,88 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Level</label>
-                                            <input type="text" class="form-control" value="" name="level" id="exampleFormControlInput1" required>
+                                            <label for="exampleFormControlInput1" class="form-label">Marketplace</label>
+                                            <select name="marketplace" id="mr" class="form-control">
+                                                <option value="{{ $item->storemr->id }}">{{ $item->storemr->marketplace }}</option>
+                                                @foreach($data['marketplace'] as $mp)
+                                                <option value="{{ $mp->id }}">{{ $mp->marketplace }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Store</label>
+                                            <input type="text" class="form-control" name="store" id="store" value="{{ $item->store }}" readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Whatsapp</label>
+                                            <select name="wa" id="wa" class="form-control">
+                                                <option value="{{ $item->customertr->id }}">{{ $item->customertr->wa }}</option>
+                                                @foreach($data['customer'] as $wa)
+                                                <option value="{{ $wa->id }}">{{ $wa->wa }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Customer</label>
+                                            <input type="text" class="form-control" name="customer" id="customer" value="{{ $item->customer }}" readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Rekening</label>
+                                            <select name="rekening" id="rekening" class="form-control">
+                                                <option>{{ $item->rekeningtr->rekening }}</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Produk</label>
+                                            <select name="produk" id="produk" class="form-control" required>
+                                                <option value="{{ $item->produktr->id }}">{{ $item->produktr->name }}</option>
+                                                @foreach ($data['produk'] as $pp )
+                                                <option value="{{ $pp->id }}">{{ $pp->name }} - {{ $pp->level }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Rate</label>
+                                            <input type="text" class="form-control" value="{{ $item->rate }}" name="rate" id="rate" required readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Admin</label>
+                                            <input type="text" class="form-control" value="{{ $item->admin }}" name="admin" id="admin" required readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Transaksi</label>
+                                            <input type="number" class="form-control" value="{{ $item->transaksi }}" id="transaksi" name="transaksi" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Biaya</label>
+                                            <input type="number" class="form-control" value="{{ $item->biaya }}" id="biaya" name="biaya" required readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Transfer</label>
+                                            <input type="number" class="form-control" value="{{ $item->transfer }}" id="transfer" name="transfer" required readonly>
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
+                                            <select name="lokasi" id="lokasi" class="form-control" required>
+                                                <option value="{{ $item->lokasitr->id }}">{{ $item->lokasitr->wilayah }}</option>
+                                                @foreach ($data['lokasi'] as $lk )
+                                                <option value="{{ $lk->id }}">{{ $lk->wilayah }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
