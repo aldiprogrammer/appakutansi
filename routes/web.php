@@ -6,10 +6,12 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LevelController;
 use App\Http\Controllers\admin\PenggunaController;
 use App\Http\Controllers\admin\ProdukController;
+use App\Http\Controllers\admin\ProsesController;
 use App\Http\Controllers\admin\RekeningController;
 use App\Http\Controllers\admin\StoreController;
 use App\Http\Controllers\admin\TransaksiCostController;
 use App\Http\Controllers\admin\TransaksiPelangganController;
+use App\Http\Controllers\admin\TransferController;
 use App\Http\Controllers\admin\WilayahController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\pdf\PdfCustomer;
@@ -78,5 +80,11 @@ Route::get('/transaksi', [TransaksiPelangganController::class, 'index'])->name('
 Route::post('/transaksi', [TransaksiPelangganController::class, 'create'])->name('transaksi.create');
 Route::delete('/hapustransaksi/{id}', [TransaksiPelangganController::class, 'delete'])->name('transaksi.delete');
 Route::put('transaksi/{id}', [TransaksiPelangganController::class, 'update'])->name('transaksi.update');
+Route::put('updatestatus/{id}', [TransaksiPelangganController::class, 'updatestatus'])->name('transaksi.updatestatus');
+
+Route::get('/proses', [ProsesController::class, 'index'])->name('proses');
+Route::put('updatestatusproses/{id}', [ProsesController::class, 'updatestatus'])->name('transaksi.updatestatus');
+
+Route::get('/transfer', [TransferController::class, 'index'])->name('transfer');
 
 Route::get('/pdfcustomer', [PdfCustomer::class, 'index'])->name('pdfcustomer');

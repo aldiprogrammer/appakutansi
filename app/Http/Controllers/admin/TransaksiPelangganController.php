@@ -17,7 +17,7 @@ class TransaksiPelangganController extends Controller
     {
         $data = [
             'title' => 'Transaksi Customer',
-            'transaksi' => TransaksiPelanggan::with('storemr', 'customertr', 'rekeningtr', 'produktr', 'lokasitr')->get(),
+            'transaksi' => TransaksiPelanggan::with('storemr', 'customertr', 'rekeningtr', 'produktr', 'lokasitr')->where('status', '0')->get(),
             'marketplace' => Store::all(),
             'customer' => Customer::all(),
             'produk' => Produk::all(),
@@ -43,6 +43,8 @@ class TransaksiPelangganController extends Controller
         $tr->biaya = $request->biaya;
         $tr->transfer = $request->transfer;
         $tr->lokasi = $request->lokasi;
+        $tr->status = '0';
+        $tr->tanggal = date('Y-m-d');
         $tr->save();
         return redirect()->route('transaksi')->with('success', 'Data transaksi customer berhasil ditambah');
     }
@@ -63,6 +65,8 @@ class TransaksiPelangganController extends Controller
         $tr->biaya = $request->biaya;
         $tr->transfer = $request->transfer;
         $tr->lokasi = $request->lokasi;
+        // $tr->status = '0';
+        // $tr->tanggal = date('Y-m-d');
         $tr->update();
         return redirect()->route('transaksi')->with('success', 'Data transaksi customer berhasil diubah');
     }
@@ -72,5 +76,13 @@ class TransaksiPelangganController extends Controller
 
         $tr = TransaksiPelanggan::find($id);
         $tr->delete();
+    }
+
+    function updatestatus($id)
+    {
+        $tr = TransaksiPelanggan::find($id);
+        $tr->status = 1;
+        $tr->update();
+        // return redirect()->route('transaksi')->with('success', 'Status transaksi customer berhasil diubah');
     }
 }

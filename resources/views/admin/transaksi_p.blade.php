@@ -127,6 +127,8 @@
                         <th scope="col">Biaya</th>
                         <th scope="col">Transfer</th>
                         <th scope="col">Lokasi</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Tanggal</th>
                         <th scope="col">Opsi</th>
 
                     </tr>
@@ -146,15 +148,23 @@
                         <td>{{ $item->customertr->owner }}</td>
                         <td>{{ $item->rekeningtr->rekening }}</td>
                         <td>{{ $item->produktr->name }}</td>
-                        <td>{{ $item->transaksi }}</td>
+                        <td>{{ number_format($item->transaksi, 0, '.')  }}</td>
                         <td>{{ $item->rate }}</td>
-                        <td>{{ $item->admin }}</td>
-                        <td>{{ $item->biaya }}</td>
-                        <td>{{ $item->transfer }}</td>
+                        <td>{{ number_format($item->admin, 0, '.')  }}</td>
+                        <td>{{ number_format($item->biaya, 0, '.')  }}</td>
+                        <td>{{ number_format($item->transfer, 0, '.')  }}</td>
                         <td>{{ $item->lokasitr->wilayah }}</td>
+                        <td>
+                            @if ($item->status == '0')
+                                <small class="text-danger">Belum diproses</small>
+                            @endif
+                        </td>
+                        <td>{{ $item->tanggal }}</td>
                         <td>
                             <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}" data-url='hapustransaksi'><i class="fas fa-trash"></i></button>
                             <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModaledit{{ $item->id }}"> <i class="fas fa-pen"></i></button>
+                            <button id="status" class="btn btnstatus btn" data-id="{{ $item->id }}" data-url='updatestatus'><i class="fas fa-users"></i></button>
+
                         </td>
                     </tr>
 
@@ -165,13 +175,13 @@
                                     <h5 class="modal-title" id="exampleModalLabel">Edit data</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="{{ route('level.update', $item->id) }}" method="post">
+                                <form action="{{ route('transaksi.update', $item->id) }}" method="post">
                                     <div class="modal-body">
                                         @csrf
                                         @method('PUT')
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Marketplace</label>
-                                            <select name="marketplace" id="mr" class="form-control">
+                                            <select name="marketplace" id="mr" class="form-control mr" data-id="{{ $item->id }}">
                                                 <option value="{{ $item->storemr->id }}">{{ $item->storemr->marketplace }}</option>
                                                 @foreach($data['marketplace'] as $mp)
                                                 <option value="{{ $mp->id }}">{{ $mp->marketplace }}</option>
@@ -181,12 +191,12 @@
 
                                         <div class="mb-3">
                                             <label class="form-label">Store</label>
-                                            <input type="text" class="form-control" name="store" id="store" value="{{ $item->store }}" readonly>
+                                            <input type="text" class="form-control store" name="store" data-id="{{ $item->id }}" id="store" value="{{ $item->store }}" readonly>
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Whatsapp</label>
-                                            <select name="wa" id="wa" class="form-control">
+                                            <select name="wa" id="wa" class="form-control wa" data-id="{{ $item->id }}">
                                                 <option value="{{ $item->customertr->id }}">{{ $item->customertr->wa }}</option>
                                                 @foreach($data['customer'] as $wa)
                                                 <option value="{{ $wa->id }}">{{ $wa->wa }}</option>
@@ -196,19 +206,19 @@
 
                                         <div class="mb-3">
                                             <label class="form-label">Customer</label>
-                                            <input type="text" class="form-control" name="customer" id="customer" value="{{ $item->customer }}" readonly>
+                                            <input type="text" class="form-control customer" data-id="{{ $item->id }}" name="customer" id="customer" value="{{ $item->customer }}" readonly>
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Rekening</label>
-                                            <select name="rekening" id="rekening" class="form-control">
-                                                <option>{{ $item->rekeningtr->rekening }}</option>
+                                            <select name="rekening" id="rekening" class="form-control rekening"  data-id="{{ $item->id }}">
+                                                <option value="{{ $item->rekeningtr->id }}">{{ $item->rekeningtr->rekening }}</option>
                                             </select>
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Produk</label>
-                                            <select name="produk" id="produk" class="form-control" required>
+                                            <select name="produk" id="produk" class="form-control produk" data-id = "{{ $item->id }}" required>
                                                 <option value="{{ $item->produktr->id }}">{{ $item->produktr->name }}</option>
                                                 @foreach ($data['produk'] as $pp )
                                                 <option value="{{ $pp->id }}">{{ $pp->name }} - {{ $pp->level }}</option>
@@ -218,33 +228,37 @@
 
                                         <div class="mb-3">
                                             <label class="form-label">Rate</label>
-                                            <input type="text" class="form-control" value="{{ $item->rate }}" name="rate" id="rate" required readonly>
+                                            <input type="text" class="form-control rate" data-id = "{{ $item->id }}" value="{{ $item->rate }}" name="rate" id="rate" required readonly>
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Admin</label>
-                                            <input type="text" class="form-control" value="{{ $item->admin }}" name="admin" id="admin" required readonly>
+                                            <input type="text" class="form-control admin" value="{{ $item->admin }}" name="admin" id="admin" data-id="{{ $item->id }}" required readonly>
+
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Transaksi</label>
-                                            <input type="number" class="form-control" value="{{ $item->transaksi }}" id="transaksi" name="transaksi" required>
+                                            <input type="number" class="form-control transaksi" value="{{ $item->transaksi }}" data-id="{{ $item->id }}" id="transaksi" name="transaksi" required>
+
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Biaya</label>
-                                            <input type="number" class="form-control" value="{{ $item->biaya }}" id="biaya" name="biaya" required readonly>
+                                            <input type="number" class="form-control biaya" data-id="{{ $item->id }}" value="{{ $item->biaya }}" id="biaya" name="biaya" required readonly>
+
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Transfer</label>
-                                            <input type="number" class="form-control" value="{{ $item->transfer }}" id="transfer" name="transfer" required readonly>
-                                        </div>
+                                            <input type="number" class="form-control transfer" data-id="{{ $item->id }}" value="{{ $item->transfer }}" id="transfer" name="transfer" required readonly>
 
+                                        </div>
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
-                                            <select name="lokasi" id="lokasi" class="form-control" required>
+                                            <select name="lokasi" id="lokasi" class="form-control lokasi" data-id="{{ $item->id }}" required>
+
                                                 <option value="{{ $item->lokasitr->id }}">{{ $item->lokasitr->wilayah }}</option>
                                                 @foreach ($data['lokasi'] as $lk )
                                                 <option value="{{ $lk->id }}">{{ $lk->wilayah }}</option>

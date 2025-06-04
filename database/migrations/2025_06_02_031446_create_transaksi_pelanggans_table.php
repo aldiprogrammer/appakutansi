@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('biaya');
             $table->string('transfer');
             $table->string('lokasi');
+            $table->string('status', 11);
+            $table->string('tanggal', 15);
             $table->timestamps();
         });
     }

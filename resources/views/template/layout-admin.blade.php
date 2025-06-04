@@ -217,6 +217,24 @@
                         }
                     })
                 });
+
+                $(".mr").change(function(){
+                    var id = $(this).val();
+                    var data = $(this).data('id');
+                    $.ajax({
+                        url : 'store/'+id,
+                        type : 'GET',
+                        success : function(response){
+                            $(".store").val(response.store);
+                        },
+                        error : function(err){
+                            console.log(err.message);
+                            
+                        }
+                    })
+                });
+
+
                 $("#wa").change(function(){
                     var id = $(this).val();
                     $.ajax({
@@ -233,6 +251,23 @@
                     })
                 });
 
+                $(".wa").change(function(){
+                    var id = $(this).val();
+                    $.ajax({
+                    url : 'customer/'+id,
+                    type : 'GET',
+                    success : function(response){
+                    $(".customer").val(response.customer);
+                    $(".rekening").html(response.rekening);
+
+                    },
+                    error : function(error){
+                    console.log(error.message);
+                    }
+                    })
+                });
+
+
                 $("#produk").change(function(){
                     var id = $(this).val();
                     $.ajax({
@@ -246,6 +281,21 @@
                         }
                     })
                 });
+
+                $(".produk").change(function(){
+                var id = $(this).val();
+                    $.ajax({
+                    url : 'produk/'+id,
+                    type : 'GET',
+                    success : function(response){
+                    $(".rate").val(response.rate);
+                    $(".admin").val(response.admin);
+                    },
+                    error : function(error){
+                    }
+                    })
+                });
+
                 
                 $("#transaksi").keyup(function(){
                     var val = $(this).val();
@@ -260,6 +310,61 @@
                     $("#transfer").val(transfer);
                    
                 })
+
+                $(".transaksi").keyup(function(){
+                var val = $(this).val();
+                var rate = $(".rate").val();
+                var rate2 = parseFloat(rate);
+                var persentase = rate2 / 100;
+                var hasil = persentase * val;
+                var admin = $(".admin").val();
+                var transfer = val - hasil - admin
+
+                $(".biaya").val(hasil);
+                $(".transfer").val(transfer);
+
+                })
+
+
+                $(".btnstatus").click(function() {
+                        var id = $(this).data('id');
+                        var url = $(this).data('url');
+
+                        Swal.fire({
+                        title: "Apa kamu yakin?",
+                        text: "Ingin mengupdate status transaksi ini",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Update"
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+
+                        $.ajax({
+                        url: url + '/' + id,
+                        type: 'PUT',
+                        data: {
+                        _token: '{{ csrf_token() }}'
+                        },
+
+                        success: function(response) {
+                        Swal.fire('Berhasil!', response.message, 'success').then(() => {
+                        location.reload();
+                        });
+                        },
+
+                        error: function() {
+                        Swal.fire('Gagal!', 'Terjadi kesalahan saat mengupdate.', 'error');
+                        }
+                        })
+
+
+                        }
+                        });
+                });
+
+
             </script>
 
 </body>
