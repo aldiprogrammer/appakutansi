@@ -5,7 +5,7 @@
         <div class="cardHeader">
             <div class="d-flex justify-content-between">
                 <h2>Halaman {{ $data['title'] }}</h2>
-                <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-plus"></i>Tambah {{ $data['title'] }}</button>
+                <a href="/addlevel" class="btn"> <i class="fas fa-plus"></i>Tambah {{ $data['title'] }}</a>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-0" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -37,6 +37,7 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Level</th>
+                        <th scope="col">Akses</th>
                         <th scope="col">Opsi</th>
 
                     </tr>
@@ -50,12 +51,17 @@
                         <th scope="row">{{ $no++ }}</th>
                         <td>{{ $item->level }}</td>
                         <td>
+                            @foreach ($item->akses as $hak )
+                                <div>- {{ $hak->akses }}</div>
+                            @endforeach
+                        </td>
+                        <td>
                             <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}" data-url='hapuslevel'><i class="fas fa-trash"></i></button>
-                            <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModaledit{{ $item->id }}"> <i class="fas fa-pen"></i></button>
+                            <a href="/editlevel/{{ $item->id }}" class="btn"> <i class="fas fa-pen"></i></button>
                         </td>
                     </tr>
 
-                    <div class="modal fade" id="exampleModaledit{{ $item->id }}" tabindex="-0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    {{-- <div class="modal fade" id="exampleModaledit{{ $item->id }}" tabindex="-0" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -78,7 +84,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     @endforeach
                 </tbody>
             </table>

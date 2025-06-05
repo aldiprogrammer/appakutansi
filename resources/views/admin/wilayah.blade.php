@@ -119,9 +119,8 @@
                              </div>
 
                          @endforeach
-
                          {{-- Baris total per lokasi --}}
-                         <tr style="font-weight: bold; background-color: #f1f2f6;">
+                         <tr style="font-weight: bold; background-color: red; color: #fff">
                             <td></td>
                              <td>-</td>
                              <td>Total</td>

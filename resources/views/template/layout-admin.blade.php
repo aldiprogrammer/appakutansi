@@ -39,46 +39,46 @@
 
                 <li class="">
                     <a href="/dashboard">
-
                         <span class="title"> <i class="fas fa-home"></i> Dashboard</span>
                     </a>
                 </li>
 
+            
                 <li class="">
-                    <a href="/customer">
-                        <span class="title"> <i class="fas fa-users"></i> Customers</span>
-                    </a>
-                </li>
-
-
-
-                <li class="">
-                    <a href="/wilayah">
-                        {{-- <span class="icon">
-                            <ion-icon name="help-outline" role="img" class="md hydrated" aria-label="help outline"></ion-icon>
-                        </span> --}}
-                        <span class="title"><i class="fas fa-map-location-dot"></i> Lokasi</span>
-
+                    <a href="/setting">
+                        <span class="title"> <i class="fas fa-gear"></i> Setting</span>
                     </a>
                 </li>
 
                 <li class="">
-                    <a href="/level">
-                        {{-- <span class="icon">
-                            <ion-icon name="settings-outline" role="img" class="md hydrated" aria-label="settings outline"></ion-icon>
-                        </span> --}}
-                        <span class="title"> <i class="fas fa-gear"></i> Level</span>
+                    <a href="/transaksicost">
+                        <span class="title"> <i class="fas fa-money-bill"></i> Expenses</span>
                     </a>
                 </li>
 
-                <li class="hovered">
-                    <a href="/user">
-                        {{-- <span class="icon">
-                            <ion-icon name="lock-closed-outline" role="img" class="md hydrated" aria-label="lock closed outline"></ion-icon>
-                        </span> --}}
-                        <span class="title"> <i class="fas fa-user"></i> User</span>
+                <li class="">
+                    <a href="/transaksi">
+                        <span class="title"> <i class="fas fa-cash-register"></i> Transaction</span>
+
                     </a>
                 </li>
+
+
+                <li class="">
+                    <a href="/proses">
+                        <span class="title"> <i class="fas fa-calendar-check"></i> Proses</span>
+
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="/transfer">
+                        <span class="title"> <i class="fas fa-money-bill-transfer"></i> Transfer</span>
+
+                    </a>
+                </li>
+
+
 
                 <li class="">
                     <a href="#">

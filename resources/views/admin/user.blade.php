@@ -27,12 +27,14 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Wilayah</label>
+                                            <label class="form-label">Lokasi</label>
                                             <select name="wilayah" id="" class="form-control">
-                                                <option value="">-- Pilih Wilayah --</option>
-                                                @foreach ($data['wilayah'] as $wl)
-                                                    <option value="{{ $wl->id }}">{{ $wl->wilayah }}</option>
-                                                @endforeach
+                                                <option value="">-- Pilih Lokasi --</option>
+                                                <option >All</option>
+                                                <option>Medan</option>
+                                                <option>Pekanbaru</option>
+                                                <option>Surabaya</option>
+                                                <option>Jakarta</option>
                                             </select>
                                         </div>
 
@@ -45,6 +47,17 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Level</label>
+                                            <select name="id_level" id="" class="form-control">
+                                                <option value="">-- Pilih Level User --</option>
+                                                @foreach ($data['level'] as $lv)
+                                                <option value="{{ $lv->id }}">{{ $lv->level }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
 
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>

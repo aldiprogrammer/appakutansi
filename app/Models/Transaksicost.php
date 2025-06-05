@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksicost extends Model
 {
 
-    protected $fillable = ['id_cost', 'cost', 'id_lokasi'];
+    protected $fillable = ['id_cost', 'cost', 'id_lokasi', 'tanggal'];
 
 
     public function costTo()

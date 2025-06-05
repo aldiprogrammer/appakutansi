@@ -58,6 +58,7 @@
                         <th scope="col">Detai of cost</th>
                         <th scope="col">Cost</th>
                         <th scope="col">Lokasi</th>
+                        <th scope="col">Tangal</th>
                         <th scope="col">Opsi</th>
                     </tr>
                 </thead>
@@ -72,6 +73,7 @@
                         <td>{{ $item->costTo->detail_of_cost }}</td>
                         <td>{{ number_format($item->cost, '0', ',') }}</td>
                         <td>{{ $item->lokasi }}</td>
+                        <td>{{ $item->tanggal }}</td>
                         <td>
                             <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}" data-url='hapustransaksicost'><i class="fas fa-trash"></i></button>
                             <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModaledit{{ $item->id }}"> <i class="fas fa-pen"></i></button>
@@ -109,6 +111,12 @@
                                             <label for="exampleFormControlInput1" class="form-label">Cost</label>
                                             <input type="number" class="form-control" value="{{ $item->cost }}" name="cost" id="exampleFormControlInput1" required>
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Tanggal</label>
+                                            <input type="date" class="form-control" value="{{ $item->tanggal }}" name="tanggal" id="exampleFormControlInput1" required>
+                                        </div>
+
 
 
                                     </div>

@@ -12,4 +12,10 @@ class Level extends Model
     {
         return $this->hasMany(Pengguna::class, 'id_level');
     }
+
+
+    public function akses()
+    {
+        return $this->hasMany(Hakakses::class, 'id_level', 'id');
+    }
 }

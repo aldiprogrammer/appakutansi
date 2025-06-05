@@ -6,8 +6,8 @@
                 <div class="d-flex justify-content-between">
                     <h2>Halaman {{ $data['title'] }}</h2>
                     <div>
-                        <a href="{{ route('pdfcustomer') }}" target="_blank" class="btn "><i class="fas fa-download"></i>
-                            Download data customer</a>
+                        {{-- <a href="{{ route('pdfcustomer') }}" target="_blank" class="btn "><i class="fas fa-download"></i>
+                            Download data customer</a> --}}
                         <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i
                                 class="fas fa-plus"></i>
                             Tambah {{ $data['title'] }}

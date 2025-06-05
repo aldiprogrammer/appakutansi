@@ -56,7 +56,7 @@
                         </td>
                         <td>{{ $item->tanggal }}</td>
                         <td>
-                            <button id="status" class="btn btnstatus btn" data-id="{{ $item->id }}" data-url='updatestatusproses'><i class="fas fa-users"></i></button>
+                            <button id="status" class="btn btnstatus btn" data-id="{{ $item->id }}" data-url='updatestatusproses'><i class="fas fa-rotate"></i></button>
 
                         </td>
                     </tr>

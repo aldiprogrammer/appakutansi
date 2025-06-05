@@ -51,43 +51,6 @@
             </table>
             @endforeach
 
-            {{-- <table class="table table-striped mt-5">
-                <thead>
-                    <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Marketplace</th>
-                        <th scope="col">Lokasi</th>
-                        <th scope="col">Store</th>
-                        <th scope="col">Whatsapp</th>
-                        <th scope="col">Transaksi</th>
-                        <th scope="col">Transfer</th>
-                        <th scope="col">Status</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data['transaksiall'] as $item )
-                    <tr>
-                        <td>{{ $item->tanggal }}</td>
-                        <td>{{ $item->customer }}</td>
-                        <td>{{ $item->storemr->marketplace }}</td>
-                        <td>{{ $item->lokasitr->wilayah }}</td>
-                        <td>{{ $item->store }}</td>
-                        <td>{{ $item->customertr->wa }}</td>
-                        <td>{{ number_format($item->transaksi, 0, '.')  }}</td>
-                        <td>{{ $item->transfer }}</td>
-                        <td>
-                            @if ($item->status == '1')
-                            <small class="text-success fw-bold" style="font-weight: bold">Proses</small>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-
-                </tbody>
-            </table> --}}
-
         </div>
 
     </div>

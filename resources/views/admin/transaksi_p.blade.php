@@ -163,7 +163,7 @@
                         <td>
                             <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}" data-url='hapustransaksi'><i class="fas fa-trash"></i></button>
                             <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModaledit{{ $item->id }}"> <i class="fas fa-pen"></i></button>
-                            <button id="status" class="btn btnstatus btn" data-id="{{ $item->id }}" data-url='updatestatus'><i class="fas fa-users"></i></button>
+                            <button id="status" class="btn btnstatus btn" data-id="{{ $item->id }}" data-url='updatestatus'><i class="fas fa-rotate"></i></button>
 
                         </td>
                     </tr>

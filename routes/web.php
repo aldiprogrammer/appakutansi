@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\PenggunaController;
 use App\Http\Controllers\admin\ProdukController;
 use App\Http\Controllers\admin\ProsesController;
 use App\Http\Controllers\admin\RekeningController;
+use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\StoreController;
 use App\Http\Controllers\admin\TransaksiCostController;
 use App\Http\Controllers\admin\TransaksiPelangganController;
@@ -31,7 +32,9 @@ Route::put('/wilayah/{id}', [WilayahController::class, 'update'])->name('wilayah
 Route::delete('/hapuswilayah/{id}', [WilayahController::class, 'delete'])->name('wilayah.delete');
 
 Route::get('/level', [LevelController::class, 'index'])->name('level');
+Route::get('/addlevel', [LevelController::class, 'addlevel'])->name('addlevel');
 Route::post('/level', [LevelController::class, 'create'])->name('level.create');
+Route::get('/editlevel/{id}', [LevelController::class, 'editlevel'])->name('level.edit');
 Route::put('/level/{id}', [LevelController::class, 'update'])->name('level.update');
 Route::delete('/hapuslevel/{id}', [LevelController::class, 'delete'])->name('level.delete');
 
@@ -86,5 +89,6 @@ Route::get('/proses', [ProsesController::class, 'index'])->name('proses');
 Route::put('updatestatusproses/{id}', [ProsesController::class, 'updatestatus'])->name('transaksi.updatestatus');
 
 Route::get('/transfer', [TransferController::class, 'index'])->name('transfer');
+Route::get('/setting', [SettingController::class, 'index'])->name('setting');
 
 Route::get('/pdfcustomer', [PdfCustomer::class, 'index'])->name('pdfcustomer');

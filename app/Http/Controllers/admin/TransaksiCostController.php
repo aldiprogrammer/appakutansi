@@ -13,7 +13,7 @@ class TransaksiCostController extends Controller
     function index()
     {
         $data = [
-            'title' => 'Transaksi Cost',
+            'title' => 'Expenses',
             'transaksi' => Transaksicost::with('costTo')->get(),
             'typecost' => Cost::all(),
         ];
@@ -26,6 +26,7 @@ class TransaksiCostController extends Controller
         $transaksi->id_cost = $request->id_cost;
         $transaksi->cost = $request->cost;
         $transaksi->id_lokasi = '';
+        $transaksi->tanggal = date('Y-m-d');
         $transaksi->save();
         return redirect()->route('transaksicost')->with('success', 'Data transaksi cost berhasil ditambah');
     }
@@ -36,6 +37,7 @@ class TransaksiCostController extends Controller
         $transaksi->id_cost = $request->id_cost;
         $transaksi->cost = $request->cost;
         $transaksi->id_lokasi = '';
+        $transaksi->tanggal = $request->tanggal;
         $transaksi->update();
         return redirect()->route('transaksicost')->with('success', 'Data transaksi cost berhasil diubah');
     }
