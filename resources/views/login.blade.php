@@ -48,6 +48,13 @@
 
                         <form action="{{ route('auth.login') }}" method="POST">
                             @csrf
+                            @if (session('error'))
+                            <div class="alert alert-danger text-center">
+                                ⚠️ {{ session('error') }}
+
+                            </div>
+                               
+                            @endif
                             <div class="mb-3">
                                 <label for="email" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="email" name="username" required
@@ -70,6 +77,9 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 </body>
 

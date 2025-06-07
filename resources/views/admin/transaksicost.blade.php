@@ -38,7 +38,24 @@
                                         <label for="exampleFormControlInput1" class="form-label">Cost</label>
                                         <input type="number" class="form-control" name="cost" id="exampleFormControlInput1" required>
                                     </div>
+                                 
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
+                                      @if (session('wilayah') == 'All')
+                                        <select name="lokasi" class="form-control typecost">
+                                            <option value="">-- Pilih Lokasi --</option>
+                                            <option>Medan</option>
+                                            <option>Pekanbaru</option>
+                                            <option>Surabayara</option>
+                                            <option>Jakarta</option>
+                                        </select>
+                                      @else
+                                      <select name="lokasi" class="form-control typecost">
+                                          <option>{{ session('wilayah') }}</option>
+                                      </select>
+                                      @endif
 
+                                    </div>
 
                                 </div>
                                 <div class="modal-footer">
@@ -94,7 +111,7 @@
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Type of cost</label>
                                             <select name="id_cost"  class="form-control typecost" data-id="{{ $item->id }}">
-                                                <option value="{{ $item->id }}">{{ $item->costTo->type_of_cost }}</option>
+                                                <option value="{{ $item->id_cost }}">{{ $item->costTo->type_of_cost }}</option>
                                                 @foreach ($data['typecost'] as $item2 )
                                                 <option value="{{ $item2->id }}">{{ $item2->type_of_cost }}</option>
                                                 @endforeach
@@ -104,13 +121,32 @@
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Detail of cost</label>
                                             <input type="text" class="form-control editdetailcost" value="{{ $item->costTo->detail_of_cost }}" name="detail" id="" required>
-
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Cost</label>
                                             <input type="number" class="form-control" value="{{ $item->cost }}" name="cost" id="exampleFormControlInput1" required>
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
+                                            @if (session('wilayah') == 'All')
+                                            <select name="lokasi" class="form-control typecost">
+                                                {{-- <option>{{ $item->lokasi }}</option> --}}
+                                                <option>{{ $item->lokasi }}</option>
+                                                <option>Medan</option>
+                                                <option>Pekanbaru</option>
+                                                <option>Surabayara</option>
+                                                <option>Jakarta</option>
+                                            </select>
+                                            @else
+                                            <select name="lokasi" class="form-control typecost">
+                                                <option>{{ session('wilayah') }}</option>
+                                            </select>
+                                            @endif
+
+                                        </div>
+
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Tanggal</label>
@@ -122,7 +158,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </form>
                             </div>

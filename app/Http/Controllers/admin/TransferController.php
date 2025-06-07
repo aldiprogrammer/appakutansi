@@ -20,7 +20,7 @@ class TransferController extends Controller
         $data = [
             'title' => 'Transfer',
             'transaksiall' => TransaksiPelanggan::with('storemr', 'customertr', 'rekeningtr', 'produktr', 'lokasitr')->where('status', 1)->get(),
-            'transaksi' => TransaksiPelanggan::select('customer', DB::raw('SUM(transfer) as total_transfer'))->groupBy('customer')->where('status', 1)->get(),
+            'transaksi' => TransaksiPelanggan::select('customer', 'rekening', DB::raw('SUM(transfer) as total_transfer'))->groupBy('customer', 'rekening')->where('status', 1)->get(),
             'marketplace' => Store::all(),
             'customer' => Customer::all(),
             'produk' => Produk::all(),

@@ -48,7 +48,7 @@
                         <td>{{ $item->admin }}</td>
                         <td>{{ $item->biaya }}</td>
                         <td>{{ $item->transfer }}</td> --}}
-                        <td>{{ $item->lokasitr->wilayah }}</td>
+                        <td>{{ $item->lokasi }}</td>
                         <td>
                             @if ($item->status == '1')
                                 <small class="text-success fw-bold" style="font-weight: bold">Proses</small>

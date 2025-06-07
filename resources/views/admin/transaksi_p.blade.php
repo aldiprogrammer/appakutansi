@@ -88,16 +88,25 @@
                                         <input type="number" class="form-control" id="transfer" name="transfer" required readonly>
                                     </div>
 
+                                   <div class="mb-3">
+                                       <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
+                                       @if (session('wilayah') == 'All')
+                                       <select name="lokasi" class="form-control typecost">
+                                           {{-- <option>{{ $item->lokasi }}</option> --}}
+                                           <option>-- Pilih Lokasi --</option>
+                                           <option>Medan</option>
+                                           <option>Pekanbaru</option>
+                                           <option>Surabayara</option>
+                                           <option>Jakarta</option>
+                                       </select>
+                                       @else
+                                       <select name="lokasi" class="form-control typecost">
+                                           <option>{{ session('wilayah') }}</option>
+                                       </select>
+                                       @endif
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
-                                        <select name="lokasi" id="lokasi" class="form-control" required>
-                                            <option value="">-- Pilih Lokasi --</option>
-                                            @foreach ($data['lokasi'] as $lk )
-                                            <option value="{{ $lk->id }}">{{ $lk->wilayah }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                   </div>
+
 
 
 
@@ -153,7 +162,7 @@
                         <td>{{ number_format($item->admin, 0, '.')  }}</td>
                         <td>{{ number_format($item->biaya, 0, '.')  }}</td>
                         <td>{{ number_format($item->transfer, 0, '.')  }}</td>
-                        <td>{{ $item->lokasitr->wilayah }}</td>
+                        <td>{{ $item->lokasi}}</td>
                         <td>
                             @if ($item->status == '0')
                                 <small class="text-danger">Belum diproses</small>
@@ -255,21 +264,30 @@
 
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
-                                            <select name="lokasi" id="lokasi" class="form-control lokasi" data-id="{{ $item->id }}" required>
+                                      <div class="mb-3">
+                                          <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
+                                          @if (session('wilayah') == 'All')
+                                          <select name="lokasi" class="form-control typecost">
+                                              {{-- <option>{{ $item->lokasi }}</option> --}}
+                                              <option>{{ $item->lokasi }}</option>
+                                              <option>Medan</option>
+                                              <option>Pekanbaru</option>
+                                              <option>Surabayara</option>
+                                              <option>Jakarta</option>
+                                          </select>
+                                          @else
+                                          <select name="lokasi" class="form-control typecost">
+                                              <option>{{ session('wilayah') }}</option>
+                                          </select>
+                                          @endif
 
-                                                <option value="{{ $item->lokasitr->id }}">{{ $item->lokasitr->wilayah }}</option>
-                                                @foreach ($data['lokasi'] as $lk )
-                                                <option value="{{ $lk->id }}">{{ $lk->wilayah }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                      </div>
+
 
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </form>
                             </div>

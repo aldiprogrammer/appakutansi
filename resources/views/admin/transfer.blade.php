@@ -11,6 +11,10 @@
             @foreach ($data['transaksi'] as $customer)
             <div class="ere" style="background-color: red;">
                 <h5 class="text-white mx-2">{{ $customer->customer }} - Total Transfer : {{ number_format($customer->total_transfer, 0, ',', '.') }}</h5>
+                @php
+                    $rekening = DB::table('rekening_customers')->where('id', $customer->rekening)->first();
+                @endphp
+                <div class="mx-2 text-white fw-bold">{{ $rekening->rekening }} - {{ $rekening->no_rekening }} - {{ $rekening->nama_rekening }}</div>
             </div>
 
             <table class="table table-striped mt-2">
@@ -34,11 +38,12 @@
                         <td>{{ $item->tanggal }}</td>
                         <td>{{ $item->customer }}</td>
                         <td>{{ $item->storemr->marketplace }}</td>
-                        <td>{{ $item->lokasitr->wilayah }}</td>
+                        <td>{{ $item->lokasi }}</td>
                         <td>{{ $item->store }}</td>
                         <td>{{ $item->customertr->wa }}</td>
                         <td>{{ number_format($item->transaksi, 0, '.')  }}</td>
-                        <td>{{ $item->transfer }}</td>
+                        <td>{{ number_format($item->transfer, 0, '.')  }}</td>
+
                         <td>
                             @if ($item->status == '1')
                             <small class="text-success fw-bold" style="font-weight: bold">Proses</small>

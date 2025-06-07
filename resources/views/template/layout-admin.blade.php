@@ -33,7 +33,7 @@
             <ul>
                 <li>
                     <a href="#">
-                        <h5 class="title text-center"> <i class="fas fa-book"></i> APPAKUNTANSI </h5>
+                        <h5 class="title text-center"> <i class="fas fa-book"></i> APP</h5>
                     </a>
                 </li>
 
@@ -59,7 +59,6 @@
                 <li class="">
                     <a href="/transaksi">
                         <span class="title"> <i class="fas fa-cash-register"></i> Transaction</span>
-
                     </a>
                 </li>
 
@@ -67,7 +66,6 @@
                 <li class="">
                     <a href="/proses">
                         <span class="title"> <i class="fas fa-calendar-check"></i> Proses</span>
-
                     </a>
                 </li>
 
@@ -81,10 +79,7 @@
 
 
                 <li class="">
-                    <a href="#">
-                        {{-- <span class="icon">
-                            <ion-icon name="log-out-outline" role="img" class="md hydrated" aria-label="log out outline"></ion-icon>
-                        </span> --}}
+                    <a href="/logout">
                         <span class="title"> <i class="fas fa-right-to-bracket"></i> Sign Out</span>
 
                     </a>
@@ -108,7 +103,7 @@
                 </div> --}}
 
                 <div class="user">
-                    <img src="{{ asset('assets') }}/imgs/customer01.jpg" alt="">
+                    <img src="{{ asset('assets') }}/imgs/user.png" alt="">
 
                 </div>
             </div>

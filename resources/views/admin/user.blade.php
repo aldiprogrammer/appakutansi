@@ -38,16 +38,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label class="form-label">Level</label>
-                                            <select name="id_level" id="" class="form-control">
-                                                <option value="">-- Pilih Level User --</option>
-                                                @foreach ($data['level'] as $lv)
-                                                    <option value="{{ $lv->id }}">{{ $lv->level }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
+                                       
                                         <div class="mb-3">
                                             <label class="form-label">Level</label>
                                             <select name="id_level" id="" class="form-control">
@@ -97,7 +88,7 @@
                             <tr>
                                 <th scope="row">{{ $no++ }}</th>
                                 <td>{{ $item->username }}</td>
-                                <td>{{ $item->wilayah->wilayah }}</td>
+                                <td>{{ $item->wilayah }}</td>
                                 <td>{{ $item->level->level }}</td>
                                 <td>
                                     <button id="hapus" class="btn btnhapus" data-id="{{ $item->id }}"
@@ -130,12 +121,12 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Wilayah</label>
                                                     <select name="wilayah" id="" class="form-control">
-                                                        <option value="{{ $item->id_wilayah }}">
-                                                            {{ $item->wilayah->wilayah }}</option>
-                                                        @foreach ($data['wilayah'] as $wl)
-                                                            <option value="{{ $wl->id }}">{{ $wl->wilayah }}
-                                                            </option>
-                                                        @endforeach
+                                                    <option value="{{ $item->wilayah }}">{{ $item->wilayah }}</option>
+                                                    <option>All</option>
+                                                    <option>Medan</option>
+                                                    <option>Pekanbaru</option>
+                                                    <option>Surabaya</option>
+                                                    <option>Jakarta</option>
                                                     </select>
                                                 </div>
 

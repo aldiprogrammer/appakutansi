@@ -94,7 +94,7 @@
 
                                 </div>
                                 <div class="mt-3 row">
-                                    <button class="btn btn-primary" type="submit"><i class="fas fa-plus"></i> Tambah level</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fas fa-pen"></i> Edit level</button>
                                 </div>
                             </div>
 

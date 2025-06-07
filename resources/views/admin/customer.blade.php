@@ -122,7 +122,7 @@
                                     <button class="btn" data-bs-toggle="modal"
                                         data-bs-target="#exampleModaledit{{ $item->id }}"> <i
                                             class="fas fa-pen"></i></button>
-                                    <a href="/rekening/{{ $item->kode }}" class="btn"> <i class="fas fa-user"></i></a>
+                                    <a href="/rekening/{{ $item->kode }}" class="btn"> <i class="fas fa-credit-card"></i></a>
                                 </td>
                             </tr>
 

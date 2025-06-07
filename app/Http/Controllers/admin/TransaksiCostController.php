@@ -25,7 +25,7 @@ class TransaksiCostController extends Controller
         $transaksi = new Transaksicost();
         $transaksi->id_cost = $request->id_cost;
         $transaksi->cost = $request->cost;
-        $transaksi->id_lokasi = '';
+        $transaksi->lokasi = $request->lokasi;
         $transaksi->tanggal = date('Y-m-d');
         $transaksi->save();
         return redirect()->route('transaksicost')->with('success', 'Data transaksi cost berhasil ditambah');
@@ -36,7 +36,7 @@ class TransaksiCostController extends Controller
         $transaksi = Transaksicost::find($id);
         $transaksi->id_cost = $request->id_cost;
         $transaksi->cost = $request->cost;
-        $transaksi->id_lokasi = '';
+        $transaksi->lokasi = $request->lokasi;
         $transaksi->tanggal = $request->tanggal;
         $transaksi->update();
         return redirect()->route('transaksicost')->with('success', 'Data transaksi cost berhasil diubah');

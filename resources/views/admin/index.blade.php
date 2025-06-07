@@ -50,8 +50,9 @@
 
     </div>
 
+
     <!-- ================ Order Details List ================= -->
-    <div class="details">
+    {{-- <div class="details">
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Recent Orders</h2>
@@ -149,7 +150,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
     </div>
     </div>
 @endsection
